@@ -5,10 +5,12 @@
   "main": "js/index.js",
   "style": "css/flickity.css",
   "dependencies": {
+    "bower": "^1.8.8",
     "desandro-matches-selector": "^2.0.0",
     "ev-emitter": "^1.1.1",
     "fizzy-ui-utils": "^2.0.7",
     "get-size": "^2.0.3",
+    "gulp-cli": "^2.2.0",
     "unidragger": "^2.3.0",
     "unipointer": "^2.3.0"
   },

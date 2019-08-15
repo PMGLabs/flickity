@@ -1056,7 +1056,9 @@ proto.positionSliderAtSelected = function() {
 proto.getPositionValue = function( position ) {
   if ( this.options.percentPosition ) {
     // percent position, round to 2 digits, like 12.34%
-    return ( Math.round( ( position / this.size.innerWidth ) * 10000 ) * 0.01 )+ '%';
+    var width = this.options.intersectItems ? this.size.innerWidth * 2.75 : this.size.innerWidth;
+    var extraBoost = this.options.intersectItems ? 9 : 0;
+    return ( Math.round( (( position / width) * 10000 ) * 0.01) + extraBoost) + '%';
   } else {
     // pixel positioning
     return Math.round( position ) + 'px';
@@ -1257,7 +1259,8 @@ Flickity.defaults = {
   percentPosition: true,
   resize: true,
   selectedAttraction: 0.025,
-  setGallerySize: true
+  setGallerySize: true,
+  intersectItems: false
   // watchCSS: false,
   // wrapAround: false
 };
@@ -1282,6 +1285,7 @@ proto._create = function() {
   this.x = 0;
   this.velocity = 0;
   this.originSide = this.options.rightToLeft ? 'right' : 'left';
+  this.intersectItems = this.options.intersectItems;
   // create viewport & slider
   this.viewport = document.createElement('div');
   this.viewport.className = 'flickity-viewport';

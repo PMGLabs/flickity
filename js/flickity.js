@@ -105,7 +105,8 @@ Flickity.defaults = {
   percentPosition: true,
   resize: true,
   selectedAttraction: 0.025,
-  setGallerySize: true
+  setGallerySize: true,
+  intersectItems: false
   // watchCSS: false,
   // wrapAround: false
 };
@@ -130,6 +131,7 @@ proto._create = function() {
   this.x = 0;
   this.velocity = 0;
   this.originSide = this.options.rightToLeft ? 'right' : 'left';
+  this.intersectItems = this.options.intersectItems;
   // create viewport & slider
   this.viewport = document.createElement('div');
   this.viewport.className = 'flickity-viewport';

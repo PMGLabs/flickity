@@ -106,7 +106,9 @@ proto.positionSliderAtSelected = function() {
 proto.getPositionValue = function( position ) {
   if ( this.options.percentPosition ) {
     // percent position, round to 2 digits, like 12.34%
-    return ( Math.round( ( position / this.size.innerWidth ) * 10000 ) * 0.01 )+ '%';
+    var width = this.options.intersectItems ? this.size.innerWidth * 2.75 : this.size.innerWidth;
+    var extraBoost = this.options.intersectItems ? 9 : 0;
+    return ( Math.round( (( position / width) * 10000 ) * 0.01) + extraBoost) + '%';
   } else {
     // pixel positioning
     return Math.round( position ) + 'px';
